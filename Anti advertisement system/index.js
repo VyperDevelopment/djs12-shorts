@@ -20,14 +20,13 @@ client.on("message", async (message) => {
       });
     });
   };
-
   const { guild, member, content } = message;
 
   if (content.includes("discord.gg/")) {
     const code = content.split("discord.gg/")[1];
 
-    const servernvite = await isInvite(guild, code);
-    if (serverInvite) {
+    const serverInvite = await isInvite(guild, code);
+    if (!serverInvite) {
       message.delete();
       message.channel.send(`${message.author}, advertising here isn't allowed!`);
     }
